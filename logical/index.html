@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Operators Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Logical Operators Demo</h1>
+
+    <label for="operator">Choose a logical operator:</label>
+    <select id="operator">
+        <option value="and">AND (&&)</option>
+        <option value="or">OR (||)</option>
+        <option value="not">NOT (!)</option>
+    </select>
+    <br>
+
+    <label for="value1">Enter first boolean (true/false):</label>
+    <input type="text" id="value1" placeholder="true or false">
+    <br>
+
+    <label for="value2">Enter second boolean (true/false) - optional for NOT:</label>
+    <input type="text" id="value2" placeholder="true or false">
+    <br>
+
+    <button onclick="logicalOperatorSwitch()">Compute</button>
+
+    <div class="result" id="result"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

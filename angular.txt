@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="calcApp">
+<head>
+    <script src="https://ajax.googleapis.com"></script>
+</head>
+<body ng-controller="calcController">
+
+    <h2>Arithmetic Operations</h2>
+
+    <!-- Local scope inputs -->
+    <input type="number" ng-model="num1" placeholder="Number 1">
+    <input type="number" ng-model="num2" placeholder="Number 2">
+
+    <button ng-click="calculate()">Calculate</button>
+
+    <hr>
+    <!-- Displaying local $scope results -->
+    <p>Addition (Scope): {{addResult}}</p>
+    <p>Subtraction (Scope): {{subResult}}</p>
+    <p>Multiplication (Scope): {{mulResult}}</p>
+    <p>Division (Scope): {{divResult}}</p>
+    
+    <!-- Displaying global $rootScope data -->
+    <p><strong>App Status:</strong> {{appStatus}}</p>
+
+    <script>
+        var app = angular.module('calcApp', []);
+
+        // Use .run to define global variables in $rootScope
+        app.run(function($rootScope) {
+            $rootScope.appStatus = "Global App is Ready"; 
+        });
+
+        // Use .controller for local logic in $scope
+        app.controller('calcController', function($scope, $rootScope) {
+            $scope.num1 = 0;
+            $scope.num2 = 0;
+
+            $scope.calculate = function() {
+                // Arithmetic operations stored in local $scope
+                $scope.addResult = $scope.num1 + $scope.num2;
+                $scope.subResult = $scope.num1 - $scope.num2;
+                $scope.mulResult = $scope.num1 * $scope.num2;
+                $scope.divResult = $scope.num1 / $scope.num2;
+                
+                // You can also update $rootScope from inside a controller
+                $rootScope.appStatus = "Last Calculation Performed!";
+            };
+        });
+    </script>
+</body>
+</html>
